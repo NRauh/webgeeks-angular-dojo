@@ -5,6 +5,6 @@
 
   <mat-card-actions>
     <button mat-raised-button color="accent">View</button>
-    <button mat-button>Edit</button>
+    <a [routerLink]="['/games', game.id, 'edit']" mat-button>Edit</a>
   </mat-card-actions>
 </mat-card>

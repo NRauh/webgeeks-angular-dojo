@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 export interface Game {
+  id: number;
   name: string;
   active: boolean;
 }
@@ -12,8 +13,8 @@ export interface Game {
 })
 export class GameListComponent implements OnInit {
   games: Game[] = [
-    { name: 'First Game', active: false },
-    { name: 'Second Game', active: true },
+    { id: 1, name: 'First Game', active: false },
+    { id: 2, name: 'Second Game', active: true },
   ];
 
   constructor() { }
