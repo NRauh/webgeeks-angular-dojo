@@ -12,12 +12,16 @@ import { AppComponent } from './app.component';
 import { GameListComponent } from './game-list/game-list.component';
 import { EditGameComponent } from './edit-game/edit-game.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { GameService } from './game.service';
+import { MatDialogModule } from '@angular/material/dialog';
+import { GameFormComponent } from './game-form/game-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     GameListComponent,
-    EditGameComponent
+    EditGameComponent,
+    GameFormComponent
   ],
   imports: [
     AppRoutingModule,
@@ -30,8 +34,14 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     ReactiveFormsModule,
     MatInputModule,
     MatCheckboxModule,
+    MatDialogModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    GameService,
+  ],
+  bootstrap: [AppComponent],
+  entryComponents: [
+    GameFormComponent,
+  ],
 })
 export class AppModule { }

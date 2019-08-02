@@ -1,10 +1,23 @@
-<mat-card class="game-card" *ngFor="let game of games">
-  <mat-card-header>
-    <mat-card-title>{{ game.name }}</mat-card-title>
-  </mat-card-header>
+<h1 class="mat-display-3 header">
+  Game List
 
-  <mat-card-actions>
-    <button mat-raised-button color="accent">View</button>
-    <a [routerLink]="['/games', game.id, 'edit']" mat-button>Edit</a>
-  </mat-card-actions>
-</mat-card>
+  <button
+    mat-raised-button color="accent"
+    (click)="openGameForm()"
+  >
+    New Game
+  </button>
+</h1>
+
+<div>
+  <mat-card class="game-card" *ngFor="let game of gameService.games">
+    <mat-card-header>
+      <mat-card-title>{{ game.name }}</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-actions>
+      <button mat-raised-button color="accent">View</button>
+      <a [routerLink]="['/games', game.id, 'edit']" mat-button>Edit</a>
+    </mat-card-actions>
+  </mat-card>
+</div>
