@@ -6,21 +6,34 @@ export interface Game {
   active?: boolean;
 }
 
+interface GameList {
+  [key: string]: Game;
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class GameService {
-  games: Game[] = [
-    { id: 1, name: 'First Game', active: false },
-    { id: 2, name: 'Second Game', active: true },
-  ];
+  games: GameList = {
+    1: { id: 1, name: 'First Game', active: false },
+    2: { id: 2, name: 'Second Game', active: true },
+  };
 
   constructor() { }
 
+  get gamesArray() {
+    return Object.values(this.games);
+  }
+
   addGame(game: Game) {
-    this.games.push({
+    const id = Object.keys(this.games).length + 1;
+    this.games[id] = {
       ...game,
-      id: this.games.length + 1,
-    });
+      id,
+    };
+  }
+
+  saveGame(game: Game) {
+    this.games[game.id] = game;
   }
 }

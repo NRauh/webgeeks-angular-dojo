@@ -10,7 +10,6 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GameListComponent } from './game-list/game-list.component';
-import { EditGameComponent } from './edit-game/edit-game.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { GameService } from './game.service';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -20,7 +19,6 @@ import { GameFormComponent } from './game-form/game-form.component';
   declarations: [
     AppComponent,
     GameListComponent,
-    EditGameComponent,
     GameFormComponent
   ],
   imports: [

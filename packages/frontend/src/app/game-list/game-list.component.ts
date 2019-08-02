@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GameService } from '../game.service';
+import { GameService, Game } from '../game.service';
 import { MatDialog } from '@angular/material/dialog';
 import { GameFormComponent } from '../game-form/game-form.component';
 
@@ -18,9 +18,12 @@ export class GameListComponent implements OnInit {
   ngOnInit() {
   }
 
-  openGameForm() {
+  openGameForm(game: Game = {}) {
     this.dialog.open(GameFormComponent, {
       width: '50vw',
+      data: {
+        game,
+      },
     });
   }
 }

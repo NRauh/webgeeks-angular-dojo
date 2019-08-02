@@ -10,14 +10,14 @@
 </h1>
 
 <div>
-  <mat-card class="game-card" *ngFor="let game of gameService.games">
+  <mat-card class="game-card" *ngFor="let game of gameService.gamesArray">
     <mat-card-header>
       <mat-card-title>{{ game.name }}</mat-card-title>
     </mat-card-header>
 
     <mat-card-actions>
       <button mat-raised-button color="accent">View</button>
-      <a [routerLink]="['/games', game.id, 'edit']" mat-button>Edit</a>
+      <a mat-button (click)="openGameForm(game)">Edit</a>
     </mat-card-actions>
   </mat-card>
 </div>
