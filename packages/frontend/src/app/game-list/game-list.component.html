@@ -16,8 +16,8 @@
     </mat-card-header>
 
     <mat-card-actions>
-      <button mat-raised-button color="accent">View</button>
-      <a mat-button (click)="openGameForm(game)">Edit</a>
+      <a [routerLink]="[game.id, 'notes']" mat-raised-button color="accent">View</a>
+      <button mat-button (click)="openGameForm(game)">Edit</button>
     </mat-card-actions>
   </mat-card>
 </div>

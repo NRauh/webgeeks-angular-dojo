@@ -14,12 +14,14 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { GameService } from './game.service';
 import { MatDialogModule } from '@angular/material/dialog';
 import { GameFormComponent } from './game-form/game-form.component';
+import { NoteListComponent } from './note-list/note-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     GameListComponent,
-    GameFormComponent
+    GameFormComponent,
+    NoteListComponent
   ],
   imports: [
     AppRoutingModule,
