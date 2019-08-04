@@ -25,6 +25,7 @@ export class GameFormComponent {
   ) {
   }
 
+  // TODO: make this not save unless the form is dirty (changed)
   saveGame() {
     const { id } = this.data.game;
     const gameToSave: Game = {

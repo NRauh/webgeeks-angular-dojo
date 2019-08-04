@@ -1,1 +1,17 @@
-<p>note-form works!</p>
+<h1 class="mat-display-3 header">New Note</h1>
+
+<form [formGroup]="noteForm" (ngSubmit)="saveNote()" class="note-form">
+  <mat-form-field>
+    <input matInput placeholder="Note Name" formControlName="name" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <textarea matInput placeholder="Note Body" formControlName="body"></textarea>
+  </mat-form-field>
+
+  <div>
+    <button type="submit" mat-raised-button color="accent">Save</button>
+    <a [routerLink]="['../']" mat-button color="primary">Back</a>
+  </div>
+</form>
+
