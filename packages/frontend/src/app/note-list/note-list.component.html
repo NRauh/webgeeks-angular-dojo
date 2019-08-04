@@ -1,6 +1,10 @@
-<app-page-header
-  headerText="Note List"
-  actionButtonText="New Note"
->
-</app-page-header>
-<p>note-list works!</p>
+<h1 class="mat-display-3 header">
+  Note List
+
+  <a
+    mat-raised-button color="accent"
+    [routerLink]="['new']"
+  >
+    New Note
+  </a>
+</h1>

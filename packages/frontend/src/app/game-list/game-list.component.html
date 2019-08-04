@@ -1,9 +1,11 @@
-<app-page-header
-  headerText="Game List"
-  actionButtonText="New Game"
-  (actionButtonClick)="openGameForm()"
->
-</app-page-header>
+<h1 class="mat-display-3 header">
+  Game List
+
+  <button mat-raised-button color="accent" (click)="openGameForm()">
+    New Game
+  </button>
+</h1>
+
 
 <div>
   <mat-card class="game-card" *ngFor="let game of games$ | async">

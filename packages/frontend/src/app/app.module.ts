@@ -10,13 +10,15 @@ import { GameService } from './game.service';
 import { GameFormComponent } from './game-form/game-form.component';
 import { NoteListComponent } from './note-list/note-list.component';
 import { UIModule } from './ui/ui.module';
+import { NoteFormComponent } from './note-form/note-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     GameListComponent,
     GameFormComponent,
-    NoteListComponent
+    NoteListComponent,
+    NoteFormComponent
   ],
   imports: [
     AppRoutingModule,
