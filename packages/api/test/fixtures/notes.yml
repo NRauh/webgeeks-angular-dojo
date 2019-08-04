@@ -1,0 +1,9 @@
+one:
+  game: test_game
+  name: A Note
+  body: A note about the setting of a game
+
+two:
+  game: test_game
+  name: Another Note
+  body: A note about a chacter backstory
