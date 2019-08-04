@@ -1,4 +1,7 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { tap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 export interface Game {
   id?: number;
@@ -6,34 +9,42 @@ export interface Game {
   active?: boolean;
 }
 
-interface GameList {
-  [key: string]: Game;
-}
-
 @Injectable({
   providedIn: 'root'
 })
 export class GameService {
-  games: GameList = {
-    1: { id: 1, name: 'First Game', active: false },
-    2: { id: 2, name: 'Second Game', active: true },
-  };
-
-  constructor() { }
-
-  get gamesArray() {
-    return Object.values(this.games);
+  constructor(
+    private http: HttpClient,
+  ) {
   }
 
-  addGame(game: Game) {
-    const id = Object.keys(this.games).length + 1;
-    this.games[id] = {
-      ...game,
-      id,
-    };
+  fetchGames(): Observable<Game[]> {
+    return this.http.get<Game[]>('http://localhost:5000/games').pipe(
+      tap(() => console.log('sending a request')),
+    );
   }
 
-  saveGame(game: Game) {
-    this.games[game.id] = game;
+  saveGame(game: Game): Observable<Game> {
+    if (game.id) {
+      return this.updateGame(game);
+    } else {
+      return this.insertGame(game);
+    }
+  }
+
+  // TODO: let the user click a button to remove a game
+  // BONUS TODO: update the list of games after removal of a game
+  removeGame(game: Game): Observable<void> {
+    const url = `http://localhost:5000/games/${game.id}`;
+    return this.http.delete<void>(url);
+  }
+
+  private insertGame(game: Game): Observable<Game> {
+    return this.http.post<Game>('http://localhost:5000/games', game);
+  }
+
+  private updateGame(game: Game) {
+    const url = `http://localhost:5000/games/${game.id}`;
+    return this.http.patch<Game>(url, game);
   }
 }

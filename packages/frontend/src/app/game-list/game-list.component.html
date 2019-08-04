@@ -6,7 +6,7 @@
 </app-page-header>
 
 <div>
-  <mat-card class="game-card" *ngFor="let game of gameService.gamesArray">
+  <mat-card class="game-card" *ngFor="let game of games$ | async">
     <mat-card-header>
       <mat-card-title>{{ game.name }}</mat-card-title>
     </mat-card-header>

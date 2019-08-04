@@ -26,17 +26,15 @@ export class GameFormComponent {
   }
 
   saveGame() {
-    const { id: gameId } = this.data.game;
+    const { id } = this.data.game;
+    const gameToSave: Game = {
+      ...this.gameForm.value,
+      id,
+    };
 
-    if (gameId) {
-      this.gameService.saveGame({
-        ...this.gameForm.value,
-        id: gameId,
-      });
-    } else {
-      this.gameService.addGame(this.gameForm.value);
-    }
-
-    this.dialogRef.close();
+    this.gameService.saveGame(gameToSave).subscribe((game) => {
+      console.log('saved game', game);
+      this.dialogRef.close(true);
+    });
   }
 }
