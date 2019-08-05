@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 export interface Todo {
   name: string;
-  complete: boolean;
+  complete?: boolean;
 }
 
 @Injectable({
@@ -15,4 +15,8 @@ export class TodoService {
   ];
 
   constructor() { }
+
+  addTodo(todo: Todo) {
+    this.todos.push(todo);
+  }
 }

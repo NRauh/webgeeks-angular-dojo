@@ -1,5 +1,16 @@
 <h1>Todo List</h1>
 
+<form [formGroup]="todoForm" (ngSubmit)="addTodo()">
+  <div>
+    <label for="todo-name">Todo Name</label>
+    <input type="text" name="todo-name" id="todo-name" placeholder="Name" formControlName="name" />
+  </div>
+
+  <div>
+    <input type="submit" value="Add">
+  </div>
+</form>
+
 <app-todo
   *ngFor="let todo of todoService.todos"
   [complete]="todo.complete"
