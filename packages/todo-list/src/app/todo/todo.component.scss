@@ -1,0 +1,10 @@
+.todo-item {
+  display: flex;
+  align-items: center;
+}
+
+.complete {
+  h2 {
+    text-decoration: line-through;
+  }
+}

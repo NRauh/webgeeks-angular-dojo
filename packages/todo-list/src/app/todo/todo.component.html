@@ -1,0 +1,13 @@
+<div class="todo-item" [ngClass]="{ 'complete': complete }">
+  <h2>
+    <ng-content></ng-content>
+  </h2>
+
+  <button *ngIf="complete" (click)="toggle.emit(false)">
+    Mark as incomplete
+  </button>
+
+  <button *ngIf="!complete" (click)="toggle.emit(true)">
+    Mark as complete
+  </button>
+</div>
