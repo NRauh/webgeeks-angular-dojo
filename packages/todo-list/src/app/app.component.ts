@@ -20,4 +20,8 @@ export class AppComponent {
   addTodo() {
     this.todoService.addTodo(this.todoForm.value);
   }
+
+  markTodo(id: number, complete: boolean) {
+    this.todoService.updateTodo(id, { complete });
+  }
 }
