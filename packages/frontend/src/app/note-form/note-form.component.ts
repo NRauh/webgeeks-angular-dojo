@@ -28,7 +28,18 @@ export class NoteFormComponent implements OnInit {
   }
 
   saveNote() {
-    console.log('i will save this note', this.noteForm.value);
+    this.route.paramMap.subscribe((params) => {
+      const noteId = params.get('noteId');
+      const gameId = params.get('gameId');
+      const note = this.noteForm.value;
+
+      this.noteService.saveNote(gameId, {
+        ...note,
+        id: noteId,
+      }).subscribe((savedNote) => {
+        console.log('i saved', savedNote);
+      });
+    });
   }
 
   getAndSetNote() {

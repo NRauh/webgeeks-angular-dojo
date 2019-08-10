@@ -24,4 +24,22 @@ export class NoteService {
     const url = `http://localhost:5000/games/${gameId}/notes/${noteId}`;
     return this.http.get<Note>(url);
   }
+
+  saveNote(gameId: number | string, note: Note): Observable<Note> {
+    if (note.id) {
+      return this.updateNote(gameId, note);
+    }
+
+    return this.insertNote(gameId, note);
+  }
+
+  private insertNote(gameId: number | string, note: Note): Observable<Note> {
+    const url = `http://localhost:5000/games/${gameId}/notes`;
+    return this.http.post<Note>(url, note);
+  }
+
+  private updateNote(gameId: number | string, note: Note): Observable<Note> {
+    const url = `http://localhost:5000/games/${gameId}/notes/${note.id}`;
+    return this.http.patch<Note>(url, note);
+  }
 }

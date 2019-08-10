@@ -11,7 +11,8 @@
 
   <div>
     <button type="submit" mat-raised-button color="accent">Save</button>
-    <a [routerLink]="['../']" mat-button color="primary">Back</a>
+    <a *ngIf="editing" [routerLink]="['../../']" mat-button color="primary">Back</a>
+    <a *ngIf="!editing" [routerLink]="['../']" mat-button color="primary">Back</a>
   </div>
 </form>
 
