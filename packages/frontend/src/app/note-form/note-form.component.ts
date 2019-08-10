@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { ActivatedRouteSnapshot, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-note-form',
@@ -7,14 +8,19 @@ import { FormGroup, FormControl } from '@angular/forms';
   styleUrls: ['./note-form.component.scss']
 })
 export class NoteFormComponent implements OnInit {
+  editing: boolean;
   noteForm = new FormGroup({
     name: new FormControl(''),
     body: new FormControl(''),
   });
 
-  constructor() { }
+  constructor(private route: ActivatedRoute) {
+  }
 
   ngOnInit() {
+    this.route.data.subscribe((routeData) => {
+      this.editing = routeData.edit;
+    });
   }
 
   saveNote() {

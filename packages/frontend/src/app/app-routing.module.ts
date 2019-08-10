@@ -19,7 +19,14 @@ const routes: Routes = [
       {
         path: 'notes/new',
         component: NoteFormComponent,
-      }
+      },
+      {
+        path: 'notes/:noteId/edit',
+        component: NoteFormComponent,
+        data: {
+          edit: true,
+        },
+      },
     ],
   },
   {
