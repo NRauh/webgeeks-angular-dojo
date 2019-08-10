@@ -9,7 +9,7 @@ export interface Note {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class NoteService {
   constructor(private http: HttpClient) {

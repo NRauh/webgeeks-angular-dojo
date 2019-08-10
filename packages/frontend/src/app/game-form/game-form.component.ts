@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { GameService, Game } from '../game.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { GameService, Game } from '../game.service';
 
 interface DialogData {
   game: Game;
@@ -10,7 +10,7 @@ interface DialogData {
 @Component({
   selector: 'app-game-form',
   templateUrl: './game-form.component.html',
-  styleUrls: ['./game-form.component.scss']
+  styleUrls: ['./game-form.component.scss'],
 })
 export class GameFormComponent {
   gameForm = new FormGroup({
@@ -21,7 +21,7 @@ export class GameFormComponent {
   constructor(
     public dialogRef: MatDialogRef<GameFormComponent>,
     public gameService: GameService,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData
+    @Inject(MAT_DIALOG_DATA) public data: DialogData,
   ) {
   }
 

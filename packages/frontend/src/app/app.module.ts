@@ -8,15 +8,15 @@ import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDialogModule } from '@angular/material/dialog';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GameListComponent } from './game-list/game-list.component';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { GameService } from './game.service';
 import { GameFormComponent } from './game-form/game-form.component';
 import { NoteListComponent } from './note-list/note-list.component';
 import { NoteFormComponent } from './note-form/note-form.component';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -24,7 +24,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     GameListComponent,
     GameFormComponent,
     NoteListComponent,
-    NoteFormComponent
+    NoteFormComponent,
   ],
   imports: [
     AppRoutingModule,

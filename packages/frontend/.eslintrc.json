@@ -1,0 +1,46 @@
+{
+  "env": {
+    "browser": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "plugins": [
+    "@typescript-eslint"
+  ],
+  "extends": [
+    "plugin:@typescript-eslint/recommended",
+    "airbnb-base"
+  ],
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
+  },
+  "rules": {
+    "@typescript-eslint/explicit-function-return-type": 0,
+    "@typescript-eslint/explicit-member-accessibility": 0,
+    "@typescript-eslint/indent": ["error", 2],
+    "@typescript-eslint/no-explicit-any": 0,
+    "@typescript-eslint/no-parameter-properties": 0,
+    "import/prefer-default-export": 0,
+    "indent": "off",
+    "no-empty-function": ["error", { "allow": ["constructors"] }],
+    "no-useless-constructor": 0
+  },
+  "overrides": [
+    {
+      "files": ["src/**/*.spec.ts"],
+      "env": {
+        "jest": true
+      }
+    }
+  ]
+}

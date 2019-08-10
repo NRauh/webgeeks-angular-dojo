@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { GameService, Game } from '../game.service';
 import { MatDialog } from '@angular/material/dialog';
-import { GameFormComponent } from '../game-form/game-form.component';
 import { Observable } from 'rxjs';
+import { GameService, Game } from '../game.service';
+import { GameFormComponent } from '../game-form/game-form.component';
 
 @Component({
   selector: 'app-game-list',
@@ -11,6 +11,7 @@ import { Observable } from 'rxjs';
 })
 export class GameListComponent implements OnInit {
   games: Game[];
+
   games$: Observable<Game[]>;
 
   constructor(

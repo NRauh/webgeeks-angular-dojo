@@ -10,7 +10,7 @@ export interface Game {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class GameService {
   constructor(
@@ -27,9 +27,8 @@ export class GameService {
   saveGame(game: Game): Observable<Game> {
     if (game.id) {
       return this.updateGame(game);
-    } else {
-      return this.insertGame(game);
     }
+    return this.insertGame(game);
   }
 
   // TODO: let the user click a button to remove a game
