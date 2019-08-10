@@ -11,13 +11,13 @@
 
 
 <div>
-  <mat-card class="game-card">
+  <mat-card class="note-card" *ngFor="let note of notes$ | async">
     <mat-card-header>
-      <mat-card-title>Fake Note</mat-card-title>
+      <mat-card-title>{{ note.name }}</mat-card-title>
     </mat-card-header>
 
     <mat-card-actions>
-      <a [routerLink]="['1', 'edit']" mat-raised-button color="accent">Edit</a>
+      <a [routerLink]="[note.id, 'edit']" mat-raised-button color="accent">Edit</a>
     </mat-card-actions>
   </mat-card>
 </div>

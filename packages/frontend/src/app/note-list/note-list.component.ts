@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { Observable } from 'rxjs';
+import { Note, NoteService } from '../note.service';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-note-list',
@@ -6,10 +10,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./note-list.component.scss']
 })
 export class NoteListComponent implements OnInit {
+  notes$: Observable<Note[]>;
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor(
+    public noteService: NoteService,
+    private route: ActivatedRoute,
+  ) {
   }
 
+  ngOnInit() {
+    this.notes$ = this.route.paramMap.pipe(
+      switchMap((params: ParamMap) =>
+        this.noteService.fetchNotes(params.get('id'))
+      ),
+    );
+  }
 }
