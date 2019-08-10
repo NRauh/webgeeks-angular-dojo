@@ -11,6 +11,8 @@ import { GameFormComponent } from './game-form/game-form.component';
 import { NoteListComponent } from './note-list/note-list.component';
 import { UIModule } from './ui/ui.module';
 import { NoteFormComponent } from './note-form/note-form.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
 
 @NgModule({
   declarations: [
@@ -28,6 +30,7 @@ import { NoteFormComponent } from './note-form/note-form.component';
     ReactiveFormsModule,
     UIModule,
     HttpClientModule,
+    MatSnackBarModule,
   ],
   providers: [
     GameService,

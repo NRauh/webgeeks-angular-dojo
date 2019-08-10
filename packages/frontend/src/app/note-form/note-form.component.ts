@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { switchMap, takeWhile, tap } from 'rxjs/operators';
+import { switchMap, takeWhile } from 'rxjs/operators';
 import { NoteService } from '../note.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-note-form',
@@ -16,7 +17,11 @@ export class NoteFormComponent implements OnInit {
     body: new FormControl(''),
   });
 
-  constructor(private route: ActivatedRoute, private noteService: NoteService) {
+  constructor(
+    private route: ActivatedRoute,
+    private noteService: NoteService,
+    private snackBar: MatSnackBar
+  ) {
   }
 
   ngOnInit() {
@@ -36,8 +41,11 @@ export class NoteFormComponent implements OnInit {
       this.noteService.saveNote(gameId, {
         ...note,
         id: noteId,
-      }).subscribe((savedNote) => {
-        console.log('i saved', savedNote);
+      }).subscribe(() => {
+        this.snackBar.open('Saved Note');
+      }, (err) => {
+        console.error('Save note error:', err);
+        this.snackBar.open('Failed to Save Note');
       });
     });
   }
