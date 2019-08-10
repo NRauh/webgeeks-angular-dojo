@@ -19,4 +19,9 @@ export class NoteService {
     const url = `http://localhost:5000/games/${gameId}/notes`;
     return this.http.get<Note[]>(url);
   }
+
+  getNote(gameId: number | string, noteId: number | string): Observable<Note> {
+    const url = `http://localhost:5000/games/${gameId}/notes/${noteId}`;
+    return this.http.get<Note>(url);
+  }
 }

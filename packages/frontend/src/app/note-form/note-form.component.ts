@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { ActivatedRouteSnapshot, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { switchMap, takeWhile, tap } from 'rxjs/operators';
+import { NoteService } from '../note.service';
 
 @Component({
   selector: 'app-note-form',
@@ -14,16 +16,34 @@ export class NoteFormComponent implements OnInit {
     body: new FormControl(''),
   });
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute, private noteService: NoteService) {
   }
 
   ngOnInit() {
     this.route.data.subscribe((routeData) => {
       this.editing = routeData.edit;
     });
+
+    this.getAndSetNote();
   }
 
   saveNote() {
     console.log('i will save this note', this.noteForm.value);
+  }
+
+  getAndSetNote() {
+    this.route.paramMap.pipe(
+      takeWhile((params: ParamMap) =>
+        !!params.get('gameId') && !!params.get('noteId')
+      ),
+      switchMap((params: ParamMap) =>
+        this.noteService.getNote(params.get('gameId'), params.get('noteId'))
+      )
+    ).subscribe(({ name, body }) => {
+      this.noteForm.setValue({
+        name,
+        body
+      });
+    });
   }
 }

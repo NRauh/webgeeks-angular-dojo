@@ -10,7 +10,7 @@ const routes: Routes = [
     component: GameListComponent,
   },
   {
-    path: 'games/:id',
+    path: 'games/:gameId',
     children: [
       {
         path: 'notes',

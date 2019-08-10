@@ -21,7 +21,7 @@ export class NoteListComponent implements OnInit {
   ngOnInit() {
     this.notes$ = this.route.paramMap.pipe(
       switchMap((params: ParamMap) =>
-        this.noteService.fetchNotes(params.get('id'))
+        this.noteService.fetchNotes(params.get('gameId'))
       ),
     );
   }
