@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
 export interface Game {
@@ -13,15 +12,11 @@ export interface Game {
   providedIn: 'root',
 })
 export class GameService {
-  constructor(
-    private http: HttpClient,
-  ) {
+  constructor(private http: HttpClient) {
   }
 
   fetchGames(): Observable<Game[]> {
-    return this.http.get<Game[]>('http://localhost:5000/games').pipe(
-      tap(() => console.log('sending a request')),
-    );
+    return this.http.get<Game[]>('http://localhost:5000/games');
   }
 
   saveGame(game: Game): Observable<Game> {
