@@ -53,7 +53,7 @@ describe('NoteFormComponent', () => {
   });
 
   it('should have a header editing a note', () => {
-    route.data.next({ edit: true });
+    route.paramMap.next({ gameId: '42', noteId: '1' });
     fixture.detectChanges();
     const title: HTMLHeadingElement = fixture.nativeElement.querySelector('h1');
     expect(title.textContent).toEqual('Editing Note');

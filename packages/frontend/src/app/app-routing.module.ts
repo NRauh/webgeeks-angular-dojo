@@ -23,9 +23,6 @@ const routes: Routes = [
       {
         path: 'notes/:noteId/edit',
         component: NoteFormComponent,
-        data: {
-          edit: true,
-        },
       },
     ],
   },

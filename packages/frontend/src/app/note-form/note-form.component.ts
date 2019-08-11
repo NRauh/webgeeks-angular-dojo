@@ -26,8 +26,8 @@ export class NoteFormComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.route.data.subscribe((routeData) => {
-      this.editing = routeData.edit;
+    this.route.paramMap.subscribe((params: ParamMap) => {
+      this.editing = this.isEditing(params);
     });
 
     this.getAndSetNote();
