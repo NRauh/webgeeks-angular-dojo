@@ -10,8 +10,6 @@ import { GameFormComponent } from '../game-form/game-form.component';
   styleUrls: ['./game-list.component.scss'],
 })
 export class GameListComponent implements OnInit {
-  games: Game[];
-
   games$: Observable<Game[]>;
 
   constructor(
