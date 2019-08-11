@@ -13,6 +13,8 @@
 
   <div mat-dialog-actions>
     <button type="button" mat-button (click)="dialogRef.close()">Discard</button>
-    <button type="submit" mat-raised-button color="accent">Save</button>
+    <button type="submit" [disabled]="!gameForm.dirty" mat-raised-button color="accent">
+      Save
+    </button>
   </div>
 </form>

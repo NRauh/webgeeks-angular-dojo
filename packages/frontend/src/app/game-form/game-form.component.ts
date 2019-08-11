@@ -25,7 +25,6 @@ export class GameFormComponent {
   ) {
   }
 
-  // TODO: make this not save unless the form is dirty (changed)
   saveGame() {
     const { id } = this.data.game;
     const gameToSave: Game = {
@@ -33,8 +32,7 @@ export class GameFormComponent {
       id,
     };
 
-    this.gameService.saveGame(gameToSave).subscribe((game) => {
-      console.log('saved game', game);
+    this.gameService.saveGame(gameToSave).subscribe(() => {
       this.dialogRef.close(true);
     });
   }
