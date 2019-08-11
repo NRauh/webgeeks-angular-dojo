@@ -30,6 +30,7 @@
     "@typescript-eslint/indent": ["error", 2],
     "@typescript-eslint/no-explicit-any": 0,
     "@typescript-eslint/no-parameter-properties": 0,
+    "class-methods-use-this": 0,
     "import/prefer-default-export": 0,
     "indent": "off",
     "no-empty-function": ["error", { "allow": ["constructors"] }],

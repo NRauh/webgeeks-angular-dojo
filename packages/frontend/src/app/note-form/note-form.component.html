@@ -1,4 +1,5 @@
-<h1 class="mat-display-3 header">New Note</h1>
+<h1 *ngIf="!editing" class="mat-display-3 header">New Note</h1>
+<h1 *ngIf="editing" class="mat-display-3 header">Editing Note</h1>
 
 <form [formGroup]="noteForm" (ngSubmit)="saveNote()" class="note-form">
   <mat-form-field>
@@ -11,8 +12,8 @@
 
   <div>
     <button type="submit" mat-raised-button color="accent">Save</button>
-    <a *ngIf="editing" [routerLink]="['../../']" mat-button color="primary">Back</a>
     <a *ngIf="!editing" [routerLink]="['../']" mat-button color="primary">Back</a>
+    <a *ngIf="editing" [routerLink]="['../../']" mat-button color="primary">Back</a>
   </div>
 </form>
 
