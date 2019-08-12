@@ -1,6 +1,8 @@
 # TodoList
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.1.3.
+This is a really simple project that is built after the todo app from the presentation.
+
+I have not done any tests, or applied any special linting rules to it.
 
 ## Development server
 

@@ -1,24 +1,22 @@
-# README
+GameBag API
+===========
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is the API for the Angular dojo.
 
-Things you may want to cover:
+If you're running the Angular project close to the time of the Dojo (8/12/19), then you don't need to run this (unless you want to).
 
-* Ruby version
+## Dependencies
 
-* System dependencies
+* Ruby
+* Postgres
 
-* Configuration
+## Getting started
 
-* Database creation
+1. Run `bundle install` to install dependencies.
+1. Run `rails db:setup` to setup the local database
 
-* Database initialization
+## Running
 
-* How to run the test suite
+If you do not already have Postgres running, use `foreman start -f Procfile.dev`.
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+If you do have Postgres running you can just use `rails s`.

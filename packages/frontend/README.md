@@ -1,27 +1,51 @@
-# GameBag
+GameBag
+=======
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.1.3.
+Angular dojo for Des Moines WebGeeks (8/12/19).
 
-## Development server
+This is intended to be a small project that resembles a real project.
+However, to keep things simple, some things (like state management), and multiple modules aren't included.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+It's inspired by [GM Binder](https://www.gmbinder.com/)
 
-## Code scaffolding
+Unit tests exist for each component and service.
+I didn't have time to write e2e tests, so they probably don't work.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Getting started
 
-## Build
+You will need to have Node installed (near version 10.15)
+The project was built preferring Yarn, but NPM should work too.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Install dependencies with `yarn install` (or `npm install`).
 
-## Running unit tests
+## Running 
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Use `yarn start` to run a dev server.
 
-## Running end-to-end tests
+The default environment will make API calls to an already deployed API.
+If you want to run the Rails API locally, use `yarn start:local`.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+## Changes from pure Angular CLI projects
 
-## Further help
+### Test Suite
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Jest is a better test runner than Karma and Jasmine (not requiring a browser, generally faster, can do more).
+The test are nearly the same, but if you're new to Angular bear in mind that there are some minor differences.
+
+See this link for more information about what was involved:
+https://blog.angularindepth.com/integrate-jest-into-an-angular-application-and-library-163b01d977ce
+
+### Linter
+
+By default the Angular CLI uses TSLint under the hood.
+This is mostly fine, and I think less of an important thing to swap out then Jest.
+
+However, TSLint will start to phase out of existence soon
+(see: https://medium.com/palantir/tslint-in-2019-1a144c2317a9).
+ESLint is also able to do more things than TSLint can at this point.
+
+So I've removed TSLint in favor of ESLint, and added the AirBnB rules.
+Though I've changed or disabled a few rules that conflict with Angular (empty constructors for example),
+or that I think are too overzealous.
+
+See this repo for how the chane was made: https://github.com/typescript-eslint/typescript-eslint
