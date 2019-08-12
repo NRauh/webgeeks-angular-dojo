@@ -1,6 +1,9 @@
 {
   "name": "root",
   "private": true,
+  "scripts": {
+    "deploy-api": "git subtree push --prefix packages/api heroku master"
+  },
   "devDependencies": {
     "lerna": "^3.14.1"
   }
