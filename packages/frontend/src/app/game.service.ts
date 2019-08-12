@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../environments/environment';
 
 export interface Game {
   id?: number;
@@ -16,7 +17,7 @@ export class GameService {
   }
 
   fetchGames(): Observable<Game[]> {
-    return this.http.get<Game[]>('http://localhost:5000/games');
+    return this.http.get<Game[]>(`${environment.apiPrefix}/games`);
   }
 
   saveGame(game: Game): Observable<Game> {
@@ -29,16 +30,16 @@ export class GameService {
   // TODO: let the user click a button to remove a game
   // BONUS TODO: update the list of games after removal of a game
   removeGame(game: Game): Observable<void> {
-    const url = `http://localhost:5000/games/${game.id}`;
+    const url = `${environment.apiPrefix}/games/${game.id}`;
     return this.http.delete<void>(url);
   }
 
   private insertGame(game: Game): Observable<Game> {
-    return this.http.post<Game>('http://localhost:5000/games', game);
+    return this.http.post<Game>(`${environment.apiPrefix}/games`, game);
   }
 
   private updateGame(game: Game) {
-    const url = `http://localhost:5000/games/${game.id}`;
+    const url = `${environment.apiPrefix}/games/${game.id}`;
     return this.http.patch<Game>(url, game);
   }
 }

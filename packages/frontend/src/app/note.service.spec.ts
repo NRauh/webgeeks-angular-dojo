@@ -1,6 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { NoteService, Note } from './note.service';
+import { environment } from '../environments/environment';
 
 describe('NoteService', () => {
   let service: NoteService;
@@ -32,7 +33,7 @@ describe('NoteService', () => {
     it('should get the notes for a game', () => {
       service.fetchNotes(1).subscribe();
 
-      const { request } = http.expectOne('http://localhost:5000/games/1/notes');
+      const { request } = http.expectOne(`${environment.apiPrefix}/games/1/notes`);
       expect(request.method).toEqual('GET');
     });
   });
@@ -41,7 +42,7 @@ describe('NoteService', () => {
     it('should get a the note', () => {
       service.getNote(1, 1).subscribe();
 
-      const { request } = http.expectOne('http://localhost:5000/games/1/notes/1');
+      const { request } = http.expectOne(`${environment.apiPrefix}/games/1/notes/1`);
       expect(request.method).toEqual('GET');
     });
   });
@@ -55,7 +56,7 @@ describe('NoteService', () => {
 
       service.saveNote(1, note).subscribe();
 
-      const { request } = http.expectOne('http://localhost:5000/games/1/notes');
+      const { request } = http.expectOne(`${environment.apiPrefix}/games/1/notes`);
       expect(request.method).toEqual('POST');
       expect(request.body).toBe(note);
     });
@@ -68,7 +69,7 @@ describe('NoteService', () => {
 
       service.saveNote(1, note).subscribe();
 
-      const { request } = http.expectOne('http://localhost:5000/games/1/notes/123');
+      const { request } = http.expectOne(`${environment.apiPrefix}/games/1/notes/123`);
       expect(request.method).toEqual('PATCH');
       expect(request.body).toBe(note);
     });

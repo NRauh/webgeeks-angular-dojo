@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../environments/environment';
 
 export interface Note {
   id?: number;
@@ -16,12 +17,12 @@ export class NoteService {
   }
 
   fetchNotes(gameId: number | string): Observable<Note[]> {
-    const url = `http://localhost:5000/games/${gameId}/notes`;
+    const url = `${environment.apiPrefix}/games/${gameId}/notes`;
     return this.http.get<Note[]>(url);
   }
 
   getNote(gameId: number | string, noteId: number | string): Observable<Note> {
-    const url = `http://localhost:5000/games/${gameId}/notes/${noteId}`;
+    const url = `${environment.apiPrefix}/games/${gameId}/notes/${noteId}`;
     return this.http.get<Note>(url);
   }
 
@@ -34,12 +35,12 @@ export class NoteService {
   }
 
   private insertNote(gameId: number | string, note: Note): Observable<Note> {
-    const url = `http://localhost:5000/games/${gameId}/notes`;
+    const url = `${environment.apiPrefix}/games/${gameId}/notes`;
     return this.http.post<Note>(url, note);
   }
 
   private updateNote(gameId: number | string, note: Note): Observable<Note> {
-    const url = `http://localhost:5000/games/${gameId}/notes/${note.id}`;
+    const url = `${environment.apiPrefix}/games/${gameId}/notes/${note.id}`;
     return this.http.patch<Note>(url, note);
   }
 }

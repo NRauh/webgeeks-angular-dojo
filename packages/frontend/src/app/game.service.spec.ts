@@ -1,6 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { GameService, Game } from './game.service';
+import { environment } from '../environments/environment';
 
 describe('GameService', () => {
   let service: GameService;
@@ -28,7 +29,7 @@ describe('GameService', () => {
   describe('fetchGames', () => {
     it('should get a list of games', () => {
       service.fetchGames().subscribe();
-      const { request } = http.expectOne('http://localhost:5000/games');
+      const { request } = http.expectOne(`${environment.apiPrefix}/games`);
       expect(request.method).toEqual('GET');
     });
   });
@@ -41,7 +42,7 @@ describe('GameService', () => {
       };
       service.saveGame(game).subscribe();
 
-      const { request } = http.expectOne('http://localhost:5000/games');
+      const { request } = http.expectOne(`${environment.apiPrefix}/games`);
       expect(request.method).toEqual('POST');
       expect(request.body).toBe(game);
     });
@@ -53,7 +54,7 @@ describe('GameService', () => {
       };
       service.saveGame(game).subscribe();
 
-      const { request } = http.expectOne('http://localhost:5000/games/321');
+      const { request } = http.expectOne(`${environment.apiPrefix}/games/321`);
       expect(request.method).toEqual('PATCH');
       expect(request.body).toBe(game);
     });
@@ -66,7 +67,7 @@ describe('GameService', () => {
       };
       service.removeGame(game).subscribe();
 
-      const { request } = http.expectOne('http://localhost:5000/games/123');
+      const { request } = http.expectOne(`${environment.apiPrefix}/games/123`);
       expect(request.method).toEqual('DELETE');
     });
   });

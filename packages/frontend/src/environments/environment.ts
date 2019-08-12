@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  apiPrefix: 'https://game-bag-webgeeks-dojo.herokuapp.com',
 };
 
 /*
